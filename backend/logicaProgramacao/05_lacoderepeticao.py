@@ -21,6 +21,14 @@ while senha != senha_correta:
 print("senha correta: ")
 
 
+# Pedir nome e senha ao usuário. Mostrar "bem vindo" quando acertar a senha e o nome. Após, pedir o salário do usuário. Mostrar salário anual. Se o salário anual for maior que 100 mil, mostrar mensagem "rico"
+
+nome = input("digite seu nome: ")
+senha = input("digite sua senha: ")
+senha_correta = input("configure sua senha: ")
+
+
+
 
 
 
