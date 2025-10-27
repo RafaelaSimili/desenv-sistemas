@@ -14,4 +14,15 @@ def detalhe_tarefa(request, tarefa_id):
     tarefa = get_object_or_404(Tarefa, pk=tarefa_id)
 
     return render(request, 'tarefas/detalhe.html', {'tarefa': tarefa})
+
+ def adicionar_tarefa(request):
+    if request.method = = "POST":
+        titulo = request.POST.get('titulo')
+        descriçao = request.POST.get('descriçao')
+        Tarefa.objects.create(titulo = titulo, descriçao = descriçao)
+    return redirect('lista_tarefas')
+
+
+
+
         
