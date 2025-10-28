@@ -10,10 +10,8 @@ def listar_tarefas(request):
     return render (request, 'tarefas/lista.html', contexto)
 
 def detalhe_tarefa(request, tarefa_id):
-        
-    tarefa = get_object_or_404(Tarefa, pk=tarefa_id)
-
-    return render(request, 'tarefas/detalhe.html', {'tarefa': tarefa})
+        tarefa = get_object_or_404(Tarefa, pk=tarefa_id)
+    return render(request, 'tarefas/detalhe.html',{'tarefa': tarefa})
 
 def adicionar_tarefa(request):
     if request.method == "POST":
@@ -30,8 +28,11 @@ def alterar_tarefa(request, tarefa_id):
         tarefa.concluda = request.POST.get('concluida') == 'on'
         tarefa.save() #salva as alteracoes no objeto existente
         return redirect('lista_tarefas')
-    return render(request, 'tarefas/form_tarefas.html', {'tarefa': tarefa})
+    return render(request,'tarefas/form_tarefas.html',{'tarefa': tarefa})
 
-
-
-        
+    def excluir_tarefa(request, tarefa_id):
+        tarefa = get_object_or_404(Tarefa, pk=tarefa_id)   
+        if request.method == 'POST':
+            tarefa.delete() #deleta o objeto no banco
+            return redirect('lista_tarefas')
+    return render(request,'tarefas/confirmar_exclusao.html',{'tarefa: tarefa'})
